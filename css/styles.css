@@ -1,0 +1,42 @@
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+
+.center {
+    padding: 25% 0;
+    text-align: center;
+}
+
+.form-label {
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+form{
+	padding-top: 10px;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+.btn-success-custom {
+	text-align:center;
+	padding:20px 0 0;
+}
+.main-container{
+    background: white;
+    /* height: 100%; */
+}
+
+.result-section{
+    display: none;
+}
