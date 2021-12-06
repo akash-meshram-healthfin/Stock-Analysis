@@ -31,13 +31,7 @@ class Stock {
         log::info($input_start_date);
         try{
             foreach($stock_data as $key => $data_arr){
-                $stock_date = str_replace('-','/',$data_arr['date']);
-
-                $input_start_date = str_replace('-','/',$input_start_date);
-
-                $input_end_date = str_replace('-','/',$input_end_date);
-                
-                if( (strtotime($stock_date) >= strtotime($input_start_date)) && (strtotime($stock_date) <= strtotime($input_end_date)) ){
+                if( (strtotime($data_arr['date']) >= strtotime($input_start_date)) && (strtotime($data_arr['date']) <= strtotime($input_end_date)) ){
                     if( empty($data_arr['price']) && $data_arr['price'] != 0){
                         /**
                          * Below logic is for getting the previous date value if price is not present for current date.
