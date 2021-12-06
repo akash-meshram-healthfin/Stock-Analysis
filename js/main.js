@@ -27,6 +27,7 @@ var stockNameArr = [];
 var stockNameArrObj = {};
 var minDate = '';
 var maxDate = '';
+
 function upload(){
     $('#overlay').show();
     // Reset the data
@@ -75,10 +76,17 @@ function upload(){
 
 function searchStock(stockName){
     stockName = stockName.toUpperCase();
-
+    
     if(!stockNameArr.includes(stockName)){
         alert("Please select stock name from the list !");
         return false;
+    } else {
+        var dates = stockNameArrObj[stockName].map(function(x) { return new Date(x['date']); })
+        var range_end = new Date(Math.max.apply(null,dates));
+        var range_start = new Date(Math.min.apply(null,dates));
+
+        $("#startDate").datepicker('option', 'minDate', range_start);
+        $("#startDate").datepicker('option', 'maxDate', range_end);
     }
 }
 
