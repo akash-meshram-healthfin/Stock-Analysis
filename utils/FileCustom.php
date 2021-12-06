@@ -33,19 +33,6 @@ class FileCustom extends Local{
                     $date = "";
                     if (isset($column[1])) {
                         $date = strip_tags($column[1]);
-                        
-                        if(count($date_range_arr) > 0){
-                            $input_date_csv = date('d-m-Y',strtotime($date));
-                            
-                            if(strtotime($input_date_csv) < strtotime($date_range_arr['start_date'])){
-                                $date_range_arr['start_date'] = $input_date_csv;
-                            } else if(strtotime($input_date_csv) > strtotime($date_range_arr['end_date'])){
-                                $date_range_arr['end_date'] = $input_date_csv;
-                            }
-                        } else {
-                            $date_range_arr['start_date'] = $date;
-                            $date_range_arr['end_date'] = $date;
-                        }
                     }
                     $stock_name = "";
                     if (isset($column[2])) {

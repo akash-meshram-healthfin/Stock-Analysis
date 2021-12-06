@@ -145,7 +145,7 @@ $("form#formCSVImport").submit(function(e) {
                 "<div id='sell-date'>Selling Date : <span>"+res_obj.data.sell.date+"</span> </div>"+
                 "<div id='sell-price'>Selling Price : <span> ₹ "+res_obj.data.sell.price+"</span> </div>"+
                 "<div id='devitaion'>Deviation : <span style='color:"+deviation_color+"'> ₹ "+res_obj.data.deviation+"</span> </div>"+
-                "<div id='profit'>Profit/Loss : <span style='color:"+deviation_color+"'> ₹ "+res_obj.data.deviation * 200+"</span> </div>"+
+                "<div id='profit'>Profit/Loss : <span style='color:"+deviation_color+"'> ₹ "+res_obj.data.deviation * 200 + " (For 200 stocks)" +"</span> </div>"+
                 "<div id='mean-price'>Mean Stock Price : <span> ₹ "+res_obj.data.mean_stock_price+"</span> </div></div>";
                 $('#res-div').append(res_div);
                 
