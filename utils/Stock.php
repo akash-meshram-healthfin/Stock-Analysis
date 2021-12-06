@@ -80,11 +80,11 @@ class Stock {
                             $this->processing_arr['sell'] = $sell_arr;
                         }
                     }
-                    
-                    array_push($this->stock_price_arr, $this->current_obj_price);
-                    array_push($this->stock_date_arr, $data_arr['date']);
             
                 }
+
+                array_push($this->stock_price_arr, $this->current_obj_price);
+                array_push($this->stock_date_arr, $data_arr['date']);
             }
             
             if(count($this->stock_price_arr) > 0){
