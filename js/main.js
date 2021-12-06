@@ -81,7 +81,20 @@ function searchStock(stockName){
         alert("Please select stock name from the list !");
         return false;
     } else {
-        var dates = stockNameArrObj[stockName].map(function(x) { return new Date(x['date']); })
+        var dates = stockNameArrObj[stockName].map(function(x) { 
+            if(x['date'].includes("-")){
+                let dateString = x['date'].split("-");
+                let day = dateString[0];
+                let month = dateString[1];
+                let year = dateString[2];
+
+                var formated_date = month+'-'+day+'-'+year;
+            } else {
+                var formated_date = x['date'];
+            }
+            
+            return new Date(formated_date); 
+        })
         var range_end = new Date(Math.max.apply(null,dates));
         var range_start = new Date(Math.min.apply(null,dates));
 
