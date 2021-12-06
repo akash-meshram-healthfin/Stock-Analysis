@@ -28,9 +28,16 @@ class Stock {
      * It requires sorted stock_data based on date as parameter for calculation.
      */
     public function getAnalysis($stock_data, $input_start_date, $input_end_date){
+        log::info($input_start_date);
         try{
             foreach($stock_data as $key => $data_arr){
-                if( (strtotime($data_arr['date']) >= strtotime($input_start_date)) && (strtotime($data_arr['date']) <= strtotime($input_end_date)) ){
+                $stock_date = str_replace('-','/',$data_arr['date']);
+
+                $input_start_date = str_replace('-','/',$input_start_date);
+
+                $input_end_date = str_replace('-','/',$input_end_date);
+                
+                if( (strtotime($stock_date) >= strtotime($input_start_date)) && (strtotime($stock_date) <= strtotime($input_end_date)) ){
                     if( empty($data_arr['price']) && $data_arr['price'] != 0){
                         /**
                          * Below logic is for getting the previous date value if price is not present for current date.
@@ -73,11 +80,10 @@ class Stock {
                             $this->processing_arr['sell'] = $sell_arr;
                         }
                     }
-                    
-                    array_push($this->stock_price_arr, $this->current_obj_price);
-                    array_push($this->stock_date_arr, $data_arr['date']);
             
                 }
+                array_push($this->stock_price_arr, $data_arr['price']);
+                array_push($this->stock_date_arr, $data_arr['date']);
             }
             
             if(count($this->stock_price_arr) > 0){
