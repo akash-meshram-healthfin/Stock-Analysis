@@ -1,7 +1,6 @@
 <?php
 namespace Utils;
 
-require '../vendor/autoload.php';
 use Utils\Log;
 use Utils\Local;
 
