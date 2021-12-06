@@ -87,6 +87,8 @@ function searchStock(stockName){
 
         $("#startDate").datepicker('option', 'minDate', range_start);
         $("#startDate").datepicker('option', 'maxDate', range_end);
+        $("#endDate").datepicker('option', 'minDate', range_start);
+        $("#endDate").datepicker('option', 'maxDate', range_end);
     }
 }
 
