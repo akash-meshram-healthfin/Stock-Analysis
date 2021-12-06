@@ -10,7 +10,7 @@ class Log {
 
     public static function info($exception) {
 
-        if(gettype($exception) == 'array'){
+        if(gettype($exception) == 'array' || gettype($exception) == 'object'){
             $exception = json_encode($exception);
         }
         $directory = "../storage/logs/";

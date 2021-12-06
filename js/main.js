@@ -125,8 +125,10 @@ $("form#formCSVImport").submit(function(e) {
         data: formData,
         success: function (data) {
             res_obj = JSON.parse(data);
-            var deviation_color = (res_obj.data.deviation > 0) ? '#00FF00' : '#FF0000';
+            
             if(res_obj.success){
+                var deviation_color = (res_obj.data.deviation > 0) ? '#00FF00' : '#FF0000';
+
                 $('#res-div').children().remove();
                 var res_div = "<div id='main-res-div'><div id='buy-date'>Purchase Date : <span>"+res_obj.data.buy.date+"</span> </div>"+
                 "<div id='buy-price'>Purchase Price : <span> ₹ "+res_obj.data.buy.price+"</span> </div>"+
@@ -145,8 +147,10 @@ $("form#formCSVImport").submit(function(e) {
 
                 document.getElementById("myChart").style.display = "block";
 
-            } else {
+            } else if(!res_obj.success){
                 alert(res_obj.message);
+            } else {
+                alert("Something went wrong!");
             }
         },
         complete:function(){

@@ -9,8 +9,9 @@ use Utils\Local;
 class FileCustom extends Local{
     private $messages;
     private $failed;
+    private $filtered_stock_name_result_arr = [];
 
-    public static function readCsv($input_file_obj) {
+    public function readCsv($input_file_obj) {
         
         $fileName = $input_file_obj["file"]["tmp_name"];
 
@@ -20,7 +21,7 @@ class FileCustom extends Local{
             $result = [];
             $date_range_arr = [];
             $stock_name_arr = [];
-            $filtered_stock_name_result_arr = [];
+            
             $i = 0;
             
             while (($column = fgetcsv($file, 10000, ",")) !== FALSE) {
@@ -66,13 +67,14 @@ class FileCustom extends Local{
                         'price' => $price,
                     );
                     
-                    $filtered_stock_name_result_arr[$stock_name][] = $paramArray;
+                    $this->filtered_stock_name_result_arr[$stock_name][] = $paramArray;
                     array_push($result, $paramArray);
                 }
                 $i++;
             }
-            
+            return $this->filtered_stock_name_result_arr;   
+        } else {
+            return $this->filtered_stock_name_result_arr;
         }
-        return $filtered_stock_name_result_arr;
     }
 }
