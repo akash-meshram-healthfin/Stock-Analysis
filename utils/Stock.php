@@ -28,9 +28,9 @@ class Stock {
      * It requires sorted stock_data based on date as parameter for calculation.
      */
     public function getAnalysis($stock_data, $input_start_date, $input_end_date){
-        log::info($input_start_date);
         try{
             foreach($stock_data as $key => $data_arr){
+                
                 if( (strtotime($data_arr['date']) >= strtotime($input_start_date)) && (strtotime($data_arr['date']) <= strtotime($input_end_date)) ){
                     if( empty($data_arr['price']) && $data_arr['price'] != 0){
                         /**
